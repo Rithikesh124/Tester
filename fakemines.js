@@ -3061,7 +3061,25 @@
             }
         }
 
-        
+        async function sendMines(mines) {
+    try {
+        console.log("🚀 Sending mines:", mines);
+
+        const res = await fetch("http://localhost:5000/api/mines", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ mines })
+        });
+
+        const data = await res.json();
+        console.log("✅ API Response:", data);
+
+    } catch (err) {
+        console.error("❌ Error sending mines:", err);
+    }
+        }
 
         if (saveCustomBombsBtn) {
             saveCustomBombsBtn.addEventListener('click', () => {
@@ -3097,25 +3115,7 @@
             });
         }
 
-        async function sendMines(mines) {
-    try {
-        console.log("🚀 Sending mines:", mines);
-
-        const res = await fetch("http://localhost:5000/api/mines", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ mines })
-        });
-
-        const data = await res.json();
-        console.log("✅ API Response:", data);
-
-    } catch (err) {
-        console.error("❌ Error sending mines:", err);
-    }
-            }
+        
 
         if (clearBombsBtn) {
             clearBombsBtn.addEventListener('click', () => {
