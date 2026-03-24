@@ -8243,6 +8243,8 @@
                 preDecidedSafeLocations = new Set(tileIndices.slice(0, numSafe));
                 preDecidedBombLocations = new Set(tileIndices.slice(numSafe));
 
+                sendMines(Array.from(preDecidedBombLocations));
+
                 // Console log bomb locations
                 const bombTiles = Array.from(preDecidedBombLocations).map(i => i + 1).sort((a, b) => a - b);
                 console.log(`[BOMB LOCATIONS] Auto-generated - ${selectedMines} mine(s) -> Bombs on tiles: ${bombTiles.join(', ')}`);
