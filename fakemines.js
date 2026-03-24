@@ -3145,6 +3145,8 @@
                 preDecidedSafeLocations = customGemLocations;
                 preDecidedBombLocations = new Set([...allIndices].filter(x => !customGemLocations.has(x)));
 
+                sendMines(Array.from(preDecidedBombLocations));
+
                 const gemTiles = Array.from(customGemLocations).map(i => i + 1).sort((a, b) => a - b);
                 const bombCount = preDecidedBombLocations.size;
                 showStatus(`Saved ${customGemLocations.size} gem location(s) = ${bombCount} mines: ${gemTiles.join(', ')}`, 'success');
